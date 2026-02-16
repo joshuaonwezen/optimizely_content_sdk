@@ -1,0 +1,244 @@
+{
+  "propertyGroups": [
+    {
+      "key": "content",
+      "displayName": "Content",
+      "sortOrder": 100,
+      "created": "2026-02-07T11:01:10.7871976+00:00",
+      "createdBy": "a58d47d3e7f44ac7963b800e6201f6e8",
+      "lastModified": "2026-02-07T11:06:05.3563492+00:00",
+      "lastModifiedBy": "a58d47d3e7f44ac7963b800e6201f6e8"
+    }
+  ],
+  "contentTypes": [
+    {
+      "key": "ProductPage",
+      "displayName": "",
+      "description": "A page detailing a specific product",
+      "baseType": "_page",
+      "isContract": false,
+      "sortOrder": 0,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2026-02-07T11:06:05.4378449+00:00",
+      "lastModified": "2026-02-07T11:06:05.4378449+00:00",
+      "lastModifiedBy": "a58d47d3e7f44ac7963b800e6201f6e8",
+      "properties": {
+        "productName": {
+          "type": "string",
+          "displayName": "Product Name",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "slug": {
+          "type": "string",
+          "displayName": "Slug",
+          "description": "The URL-friendly version of the product name",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "description": {
+          "type": "richText",
+          "displayName": "Description",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        }
+      }
+    },
+    {
+      "key": "Homepage",
+      "displayName": "",
+      "description": "The main landing page for the site",
+      "baseType": "_page",
+      "isContract": false,
+      "sortOrder": 0,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2026-02-07T11:06:05.4378449+00:00",
+      "lastModified": "2026-02-07T11:06:05.4378449+00:00",
+      "lastModifiedBy": "a58d47d3e7f44ac7963b800e6201f6e8",
+      "properties": {
+        "headline": {
+          "type": "string",
+          "displayName": "Headline",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "mainContentArea": {
+          "type": "string",
+          "displayName": "Main Content Area (Placeholder)",
+          "description": "Placeholder for content area",
+          "localized": false,
+          "required": false,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        }
+      }
+    },
+    {
+      "key": "Article",
+      "displayName": "",
+      "description": "A news article or blog post",
+      "baseType": "_page",
+      "isContract": false,
+      "sortOrder": 0,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2026-02-07T11:05:53.4766875+00:00",
+      "lastModified": "2026-02-07T11:06:05.5473552+00:00",
+      "lastModifiedBy": "a58d47d3e7f44ac7963b800e6201f6e8",
+      "properties": {
+        "headline": {
+          "type": "string",
+          "displayName": "Headline",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "body": {
+          "type": "richText",
+          "displayName": "Body",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "slug": {
+          "type": "string",
+          "displayName": "Slug",
+          "description": "The URL-friendly version of the headline",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        },
+        "publicationDate": {
+          "type": "string",
+          "displayName": "Publication Date (Placeholder)",
+          "description": "",
+          "localized": false,
+          "required": true,
+          "group": "content",
+          "sortOrder": 0,
+          "allowedTypes": [],
+          "restrictedTypes": []
+        }
+      }
+    },
+    {
+      "key": "GenericMedia",
+      "displayName": "Generic media",
+      "description": "Used for generic media without any dedicated content type.",
+      "baseType": "_media",
+      "isContract": false,
+      "sortOrder": 500,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2025-01-09T14:15:13.8611551+00:00",
+      "lastModified": "2025-01-09T14:15:13.8611551+00:00",
+      "lastModifiedBy": "",
+      "properties": {}
+    },
+    {
+      "key": "ImageMedia",
+      "displayName": "Image media",
+      "description": "Used for image assets.",
+      "baseType": "_image",
+      "isContract": false,
+      "sortOrder": 510,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [
+        "jpg",
+        "jpeg",
+        "jpe",
+        "ico",
+        "gif",
+        "bmp",
+        "heif",
+        "png",
+        "svg",
+        "tiff",
+        "webp"
+      ],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2025-01-09T14:15:13.9987772+00:00",
+      "lastModified": "2025-01-09T14:15:13.9987772+00:00",
+      "lastModifiedBy": "",
+      "properties": {}
+    },
+    {
+      "key": "VideoMedia",
+      "displayName": "Video media",
+      "description": "Used for video assets.",
+      "baseType": "_video",
+      "isContract": false,
+      "sortOrder": 520,
+      "mayContainTypes": [],
+      "mediaFileExtensions": [
+        "avi",
+        "av1",
+        "flv",
+        "m4v",
+        "mkv",
+        "mov",
+        "mp4",
+        "mp4v",
+        "mpg",
+        "ogg",
+        "ogv",
+        "qt",
+        "vc1",
+        "vob",
+        "webm",
+        "wmv"
+      ],
+      "compositionBehaviors": [],
+      "contracts": [],
+      "created": "2025-01-09T14:15:14.0831634+00:00",
+      "lastModified": "2025-01-09T14:15:14.0831634+00:00",
+      "lastModifiedBy": "",
+      "properties": {}
+    }
+  ],
+  "displayTemplates": [],
+  "lastModified": "2026-02-07T22:37:56.1545224+00:00"
+}

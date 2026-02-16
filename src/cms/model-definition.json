@@ -1,0 +1,70 @@
+{
+  "propertyGroups": [
+    { "key": "content", "displayName": "Content", "sortOrder": 100 },
+    { "key": "seo", "displayName": "SEO", "sortOrder": 200 },
+    { "key": "settings", "displayName": "Settings", "sortOrder": 300 }
+  ],
+  "contentTypes": [
+    {
+      "key": "SeoSettings",
+      "displayName": "SEO Settings",
+      "description": "SEO metadata for pages.",
+      "baseType": "_block",
+      "properties": {
+        "metaTitle": { "type": "string", "displayName": "Meta Title", "group": "seo" },
+        "metaDescription": { "type": "string", "displayName": "Meta Description", "group": "seo" },
+        "ogImage": { "type": "content", "displayName": "OG Image", "allowedTypes": ["ImageMedia"], "group": "seo" }
+      }
+    },
+    {
+      "key": "HeroBlock",
+      "displayName": "Hero Block",
+      "description": "A reusable hero component.",
+      "baseType": "_block",
+      "properties": {
+        "headline": { "type": "string", "displayName": "Headline", "required": true, "group": "content" },
+        "subheadline": { "type": "string", "displayName": "Subheadline", "group": "content" },
+        "backgroundImage": { "type": "content", "displayName": "Background Image", "allowedTypes": ["ImageMedia"], "group": "content" },
+        "ctaText": { "type": "string", "displayName": "CTA Text", "group": "content" },
+        "ctaLink": { "type": "string", "displayName": "CTA Link (URL)", "group": "content" }
+      }
+    },
+    {
+      "key": "LandingPage",
+      "displayName": "Landing Page (Visual Builder)",
+      "description": "A flexible page built with the Visual Builder composition model.",
+      "baseType": "_page",
+      "properties": {
+        "seo": { "type": "block", "displayName": "SEO", "allowedTypes": ["SeoSettings"], "group": "seo" },
+        "mainContentArea": { "type": "composition", "displayName": "Main Content Area", "group": "content" }
+      }
+    },
+    {
+      "key": "TextBlock",
+      "displayName": "Text Block",
+      "baseType": "_block",
+      "properties": {
+        "body": { "type": "richText", "displayName": "Body", "group": "content" }
+      }
+    },
+    {
+      "key": "ImageMedia",
+      "displayName": "Image Media",
+      "baseType": "_image",
+      "mediaFileExtensions": ["jpg", "jpeg", "png", "webp", "svg", "gif"],
+      "properties": {
+        "altText": { "type": "string", "displayName": "Alt Text", "group": "content" }
+      }
+    },
+    {
+        "key": "Homepage",
+        "displayName": "Homepage (Legacy)",
+        "description": "Legacy homepage type. Use LandingPage for new pages.",
+        "baseType": "_page",
+        "properties": {
+            "headline": { "type": "string", "displayName": "Headline", "group": "content" },
+            "mainContentArea": { "type": "string", "displayName": "Main Content Area", "group": "content" }
+        }
+    }
+  ]
+}
