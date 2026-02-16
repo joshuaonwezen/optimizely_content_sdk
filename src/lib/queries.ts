@@ -26,7 +26,7 @@ export const ArticleFragment = gql`
 export const HomepageFragment = gql`
   fragment HomepageFields on Homepage {
     headline
-    mainContentArea
+    legacyBody: mainContentArea
   }
 `;
 
@@ -38,10 +38,12 @@ export const HeroBlockFragment = gql`
     ctaText
     ctaLink
     backgroundImage {
-      url {
-        default
+      ... on ImageMedia {
+        url {
+          default
+        }
+        altText
       }
-      altText
     }
   }
 `;
@@ -72,10 +74,10 @@ export const LandingPageFragment = gql`
 // Helper fragment for Experience Composition
 // Fetches the structure needed for <OptimizelyExperience>
 export const ExperienceFragment = gql`
-  fragment ExperienceComposition on _Experience {
+  fragment ExperienceComposition on LandingExperience {
     composition {
       nodes {
-        ... on ExperienceComponentNode {
+        ... on CompositionComponentNode {
           id
           key
           nodeType
@@ -85,13 +87,13 @@ export const ExperienceFragment = gql`
              ...TextBlockFields
           }
         }
-        ... on ExperienceStructureNode {
+        ... on CompositionStructureNode {
           id
           key
           nodeType
           displayName
           nodes {
-             ... on ExperienceComponentNode {
+             ... on CompositionComponentNode {
                 id
                 key
                 nodeType

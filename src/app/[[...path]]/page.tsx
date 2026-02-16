@@ -50,7 +50,7 @@ export default async function Page({ params }: { params: { path?: string[] } }) 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {content._metadata.types.includes('Homepage') && (
-        <Homepage content={content as HomepageType} />
+        <Homepage content={{...content, mainContentArea: content.legacyBody} as any} />
       )}
       {content._metadata.types.includes('LandingPage') && (
         <LandingPage content={content as LandingPageType} />
