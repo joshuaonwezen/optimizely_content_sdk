@@ -21,27 +21,24 @@ export default async function Page({ params }: { params: { path?: string[] } }) 
   }
 
   const content = data._Content.items[0];
-  const types = content._metadata.types;
 
   return (
-    <main className="min-h-screen">
-      {types.includes('LandingPage') && (
-        <LandingPage content={content as LandingPageType} />
-      )}
-      {types.includes('Homepage') && (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {content._metadata.types.includes('Homepage') && (
         <Homepage content={content as HomepageType} />
       )}
-      {types.includes('ProductPage') && (
+      {content._metadata.types.includes('LandingPage') && (
+        <LandingPage content={content as LandingPageType} />
+      )}
+      {content._metadata.types.includes('ProductPage') && (
         <ProductPage content={content as ProductPageType} />
       )}
-       {types.includes('Article') && (
+       {content._metadata.types.includes('Article') && (
         <Article content={content as ArticleType} />
       )}
       {/* Fallback or debug */}
-      {!['Homepage', 'ProductPage', 'Article', 'LandingPage'].some(t => types.includes(t)) && (
-        <div className="p-24">
-          <pre>{JSON.stringify(content, null, 2)}</pre>
-        </div>
+      {!['Homepage', 'LandingPage', 'ProductPage', 'Article'].some(t => content._metadata.types.includes(t)) && (
+        <pre>{JSON.stringify(content, null, 2)}</pre>
       )}
     </main>
   );
