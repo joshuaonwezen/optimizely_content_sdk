@@ -1,3 +1,6 @@
+// Manually defining ExperienceNode to avoid import issues
+export type ExperienceNode = any;
+
 export interface ProductPage {
   productName: string;
   slug: string;
@@ -48,6 +51,16 @@ export interface TextBlock {
 
 export interface LandingPage {
   mainContentArea?: (HeroBlock | TextBlock)[];
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+}
+
+export interface LandingExperience {
+  composition?: {
+    nodes: ExperienceNode[];
+  };
   seo?: {
     metaTitle?: string;
     metaDescription?: string;

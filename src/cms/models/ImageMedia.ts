@@ -9,7 +9,7 @@ export const ImageMedia = contentType({
     altText: {
       type: 'string',
       displayName: 'Alt Text',
-      group: 'content',
+      group: 'editorial',
     },
   },
 });

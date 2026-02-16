@@ -9,7 +9,7 @@ export const TextBlock = contentType({
     body: {
       type: 'richText',
       displayName: 'Body',
-      group: 'content',
+      group: 'editorial',
     },
   },
 });

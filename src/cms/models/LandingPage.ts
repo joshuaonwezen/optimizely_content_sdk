@@ -18,7 +18,7 @@ export const LandingPage = contentType({
     mainContentArea: {
       type: 'content',
       displayName: 'Main Content Area',
-      group: 'content',
+      group: 'editorial',
       allowedTypes: [HeroBlock, TextBlock],
     },
   },

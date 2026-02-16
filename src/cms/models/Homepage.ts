@@ -10,12 +10,12 @@ export const Homepage = contentType({
     headline: {
       type: 'string',
       displayName: 'Headline',
-      group: 'content',
+      group: 'editorial',
     },
     mainContentArea: {
       type: 'string',
       displayName: 'Main Content Area',
-      group: 'content',
+      group: 'editorial',
     },
     seo: {
       type: 'content',

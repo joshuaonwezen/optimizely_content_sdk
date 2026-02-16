@@ -69,6 +69,55 @@ export const LandingPageFragment = gql`
   }
 `;
 
+// Helper fragment for Experience Composition
+// Fetches the structure needed for <OptimizelyExperience>
+export const ExperienceFragment = gql`
+  fragment ExperienceComposition on _Experience {
+    composition {
+      nodes {
+        ... on ExperienceComponentNode {
+          id
+          key
+          nodeType
+          displayName
+          component {
+             ...HeroBlockFields
+             ...TextBlockFields
+          }
+        }
+        ... on ExperienceStructureNode {
+          id
+          key
+          nodeType
+          displayName
+          nodes {
+             ... on ExperienceComponentNode {
+                id
+                key
+                nodeType
+                displayName
+                component {
+                   ...HeroBlockFields
+                   ...TextBlockFields
+                }
+             }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const LandingExperienceFragment = gql`
+  fragment LandingExperienceFields on LandingExperience {
+    seo {
+      metaTitle
+      metaDescription
+    }
+    ...ExperienceComposition
+  }
+`;
+
 export const GetContentByPath = gql`
   query GetContentByPath($path: String!) {
     _Content(where: { _metadata: { url: { default: { eq: $path } } } }) {
@@ -81,6 +130,7 @@ export const GetContentByPath = gql`
         ...ArticleFields
         ...HomepageFields
         ...LandingPageFields
+        ...LandingExperienceFields
       }
     }
   }
@@ -90,4 +140,6 @@ export const GetContentByPath = gql`
   ${HeroBlockFragment}
   ${TextBlockFragment}
   ${LandingPageFragment}
+  ${ExperienceFragment}
+  ${LandingExperienceFragment}
 `;

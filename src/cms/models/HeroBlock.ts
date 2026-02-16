@@ -11,28 +11,28 @@ export const HeroBlock = contentType({
       type: 'string',
       displayName: 'Headline',
       required: true,
-      group: 'content',
+      group: 'editorial',
     },
     subheadline: {
       type: 'string',
       displayName: 'Subheadline',
-      group: 'content',
+      group: 'editorial',
     },
     backgroundImage: {
       type: 'content',
       displayName: 'Background Image',
       allowedTypes: [ImageMedia],
-      group: 'content',
+      group: 'editorial',
     },
     ctaText: {
       type: 'string',
       displayName: 'CTA Text',
-      group: 'content',
+      group: 'editorial',
     },
     ctaLink: {
       type: 'string',
       displayName: 'CTA Link (URL)',
-      group: 'content',
+      group: 'editorial',
     },
   },
 });
