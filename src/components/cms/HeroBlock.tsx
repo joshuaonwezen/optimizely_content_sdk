@@ -6,7 +6,7 @@ export function HeroBlock({ content }: { content: HeroBlockType }) {
     <section className="relative w-full h-[500px] flex items-center justify-center text-center bg-gray-900 text-white overflow-hidden">
       {content.backgroundImage && (
         <OptimizationImage
-          src={content.backgroundImage.url}
+          src={content.backgroundImage}
           alt={content.backgroundImage.altText || content.headline}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         />

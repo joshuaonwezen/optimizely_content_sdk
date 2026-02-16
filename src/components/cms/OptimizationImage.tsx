@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import { ImageMedia } from '@/lib/types';
 
 interface ImageProps {
-  src: string | { default: string } | { _metadata: { url: { default: string } } };
+  src: string | ImageMedia | undefined | null;
   alt: string;
   width?: number;
   height?: number;
@@ -11,11 +12,20 @@ interface ImageProps {
 export function OptimizationImage({ src, alt, width = 800, height = 600, className }: ImageProps) {
   let imageUrl: string | undefined;
 
+  if (!src) {
+    return null;
+  }
+
   if (typeof src === 'string') {
     imageUrl = src;
-  } else if ('default' in src) {
-    imageUrl = src.default;
-  } else if (src?._metadata?.url?.default) {
+  } else if ('default' in src && src.url) {
+    // Legacy/Direct shape
+    imageUrl = src.url.default;
+  } else if ('url' in src && src.url) {
+     // Shape with url property
+     imageUrl = src.url.default;
+  } else if ('_metadata' in src && src._metadata?.url?.default) {
+    // New metadata shape
     imageUrl = src._metadata.url.default;
   }
 
