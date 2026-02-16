@@ -3,7 +3,8 @@ import { GetContentByPath } from '@/lib/queries';
 import { ProductPage } from '@/components/cms/ProductPage';
 import { Homepage } from '@/components/cms/Homepage';
 import { Article } from '@/components/cms/Article';
-import { ProductPage as ProductPageType, Homepage as HomepageType, Article as ArticleType } from '@/lib/types';
+import { LandingPage } from '@/components/cms/LandingPage';
+import { ProductPage as ProductPageType, Homepage as HomepageType, Article as ArticleType, LandingPage as LandingPageType } from '@/lib/types';
 
 export default async function Page({ params }: { params: { path?: string[] } }) {
   const path = params.path ? `/${params.path.join('/')}` : '/';
@@ -20,21 +21,27 @@ export default async function Page({ params }: { params: { path?: string[] } }) 
   }
 
   const content = data._Content.items[0];
+  const types = content._metadata.types;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {content._metadata.types.includes('Homepage') && (
+    <main className="min-h-screen">
+      {types.includes('LandingPage') && (
+        <LandingPage content={content as LandingPageType} />
+      )}
+      {types.includes('Homepage') && (
         <Homepage content={content as HomepageType} />
       )}
-      {content._metadata.types.includes('ProductPage') && (
+      {types.includes('ProductPage') && (
         <ProductPage content={content as ProductPageType} />
       )}
-       {content._metadata.types.includes('Article') && (
+       {types.includes('Article') && (
         <Article content={content as ArticleType} />
       )}
       {/* Fallback or debug */}
-      {!['Homepage', 'ProductPage', 'Article'].some(t => content._metadata.types.includes(t)) && (
-        <pre>{JSON.stringify(content, null, 2)}</pre>
+      {!['Homepage', 'ProductPage', 'Article', 'LandingPage'].some(t => types.includes(t)) && (
+        <div className="p-24">
+          <pre>{JSON.stringify(content, null, 2)}</pre>
+        </div>
       )}
     </main>
   );

@@ -21,3 +21,35 @@ export interface Article {
     json: any;
   };
 }
+
+export interface ImageMedia {
+  url: {
+    default: string;
+  };
+  altText?: string;
+}
+
+export interface HeroBlock {
+  __typename: 'HeroBlock';
+  headline: string;
+  subheadline?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  backgroundImage?: ImageMedia;
+}
+
+export interface TextBlock {
+  __typename: 'TextBlock';
+  body: {
+    html: string;
+    json: any;
+  };
+}
+
+export interface LandingPage {
+  mainContentArea?: (HeroBlock | TextBlock)[];
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+}

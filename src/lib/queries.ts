@@ -30,6 +30,45 @@ export const HomepageFragment = gql`
   }
 `;
 
+export const HeroBlockFragment = gql`
+  fragment HeroBlockFields on HeroBlock {
+    __typename
+    headline
+    subheadline
+    ctaText
+    ctaLink
+    backgroundImage {
+      url {
+        default
+      }
+      altText
+    }
+  }
+`;
+
+export const TextBlockFragment = gql`
+  fragment TextBlockFields on TextBlock {
+    __typename
+    body {
+      json
+      html
+    }
+  }
+`;
+
+export const LandingPageFragment = gql`
+  fragment LandingPageFields on LandingPage {
+    mainContentArea {
+      ...HeroBlockFields
+      ...TextBlockFields
+    }
+    seo {
+      metaTitle
+      metaDescription
+    }
+  }
+`;
+
 export const GetContentByPath = gql`
   query GetContentByPath($path: String!) {
     _Content(where: { _metadata: { url: { default: { eq: $path } } } }) {
@@ -41,10 +80,14 @@ export const GetContentByPath = gql`
         ...ProductPageFields
         ...ArticleFields
         ...HomepageFields
+        ...LandingPageFields
       }
     }
   }
   ${ProductPageFragment}
   ${ArticleFragment}
   ${HomepageFragment}
+  ${HeroBlockFragment}
+  ${TextBlockFragment}
+  ${LandingPageFragment}
 `;
