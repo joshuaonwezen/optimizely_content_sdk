@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 interface ImageProps {
-  src: string | { default: string };
+  src: string | { default: string } | { _metadata: { url: { default: string } } };
   alt: string;
   width?: number;
   height?: number;
@@ -9,7 +9,15 @@ interface ImageProps {
 }
 
 export function OptimizationImage({ src, alt, width = 800, height = 600, className }: ImageProps) {
-  const imageUrl = typeof src === 'string' ? src : src?.default;
+  let imageUrl: string | undefined;
+
+  if (typeof src === 'string') {
+    imageUrl = src;
+  } else if ('default' in src) {
+    imageUrl = src.default;
+  } else if (src?._metadata?.url?.default) {
+    imageUrl = src._metadata.url.default;
+  }
 
   if (!imageUrl) {
     return null;

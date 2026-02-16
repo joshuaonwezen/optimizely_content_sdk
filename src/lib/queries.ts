@@ -39,8 +39,10 @@ export const HeroBlockFragment = gql`
     ctaLink
     backgroundImage {
       ... on ImageMedia {
-        url {
-          default
+        _metadata {
+          url {
+            default
+          }
         }
         altText
       }
@@ -78,7 +80,6 @@ export const ExperienceFragment = gql`
     composition {
       nodes {
         ... on CompositionComponentNode {
-          id
           key
           nodeType
           displayName
@@ -88,13 +89,11 @@ export const ExperienceFragment = gql`
           }
         }
         ... on CompositionStructureNode {
-          id
           key
           nodeType
           displayName
           nodes {
              ... on CompositionComponentNode {
-                id
                 key
                 nodeType
                 displayName

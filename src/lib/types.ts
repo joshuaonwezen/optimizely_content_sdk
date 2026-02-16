@@ -26,7 +26,12 @@ export interface Article {
 }
 
 export interface ImageMedia {
-  url: {
+  _metadata?: {
+    url: {
+      default: string;
+    };
+  };
+  url?: {
     default: string;
   };
   altText?: string;
