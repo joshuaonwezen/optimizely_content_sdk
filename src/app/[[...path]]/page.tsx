@@ -16,13 +16,31 @@ import {
 export default async function Page({ params }: { params: { path?: string[] } }) {
   const path = params.path ? `/${params.path.join('/')}` : '/';
   
-  const data: any = await graphClient.request(GetContentByPath, { path });
+  let data: any;
+  try {
+    data = await graphClient.request(GetContentByPath, { path });
+  } catch (error: any) {
+    console.error("Graph API Error:", JSON.stringify(error, null, 2));
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <h1 className="text-2xl font-bold text-red-600">Error Fetching Content</h1>
+        <p>Path: {path}</p>
+        <pre className="text-xs bg-gray-100 p-4 rounded mt-4 max-w-xl overflow-auto">
+          {error.message || JSON.stringify(error)}
+        </pre>
+      </main>
+    );
+  }
 
   if (!data?._Content?.items?.length) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <h1>404 - Not Found</h1>
         <p>Could not find content for path: {path}</p>
+        <div className="mt-4 p-4 bg-gray-100 rounded">
+            <p className="text-sm text-gray-500">Debug Info:</p>
+            <pre className="text-xs">{JSON.stringify(data, null, 2)}</pre>
+        </div>
       </main>
     );
   }
