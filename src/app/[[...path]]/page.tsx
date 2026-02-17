@@ -1,3 +1,4 @@
+import '@/components/cms/registry'; // Initialize CMS component registry
 import { graphClient } from '@/lib/cms';
 import { GetContentByPath } from '@/lib/queries';
 import { ProductPage } from '@/components/cms/ProductPage';
