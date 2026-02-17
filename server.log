@@ -1,0 +1,32 @@
+
+> opti-demo@0.1.0 start
+> next start
+
+▲ Next.js 16.1.6
+- Local:         http://localhost:3000
+- Network:       http://10.0.0.40:3000
+
+✓ Starting...
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/ubuntu/.openclaw/optimizely/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /home/ubuntu/.openclaw/optimizely/opti-demo/package-lock.json
+
+✓ Ready in 384ms
+LandingPage: mainContentArea is missing or not an array {
+  _metadata: {
+    key: '8c8b2102c729440d81161932e6cbf29e',
+    types: [ 'LandingPage', '_Page', '_Content', '_Item' ]
+  },
+  mainContentArea: {
+    __typename: 'HeroBlock',
+    headline: 'Optimizely CMS',
+    subheadline: 'Hey this is the subheading',
+    ctaText: 'Some text',
+    ctaLink: null,
+    backgroundImage: {}
+  },
+  seo: { metaTitle: null, metaDescription: null }
+}

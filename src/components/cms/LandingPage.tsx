@@ -3,15 +3,25 @@ import { HeroBlock } from './HeroBlock';
 import { TextBlock } from './TextBlock';
 
 export function LandingPage({ content }: { content: LandingPageType }) {
-  // Safe check for array
-  if (!content.mainContentArea || !Array.isArray(content.mainContentArea)) {
-      console.warn('LandingPage: mainContentArea is missing or not an array', content);
-      return null;
+  let blocks: any[] = [];
+
+  // Normalize mainContentArea to an array
+  if (content.mainContentArea) {
+    if (Array.isArray(content.mainContentArea)) {
+      blocks = content.mainContentArea;
+    } else {
+      // It's a single object (HeroBlock or TextBlock), wrap it
+      blocks = [content.mainContentArea];
+    }
+  }
+
+  if (blocks.length === 0) {
+    return null;
   }
 
   return (
     <div className="landing-page">
-      {content.mainContentArea.map((block: any, index: number) => {
+      {blocks.map((block: any, index: number) => {
         // Safe check for typename
         const typename = block?.__typename;
         

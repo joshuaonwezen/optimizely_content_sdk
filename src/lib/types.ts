@@ -55,7 +55,7 @@ export interface TextBlock {
 }
 
 export interface LandingPage {
-  mainContentArea?: (HeroBlock | TextBlock)[];
+  mainContentArea?: (HeroBlock | TextBlock)[] | (HeroBlock | TextBlock);
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
