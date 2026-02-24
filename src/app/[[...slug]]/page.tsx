@@ -42,10 +42,16 @@ export async function generateStaticParams() {
   }
     `;
 
-  const client = new GraphClient(process.env.OPTIMIZELY_GRAPH_SINGLE_KEY!, {
-    graphUrl: process.env.OPTIMIZELY_GRAPH_GATEWAY,
-  });
-  const data = await client.request(query, {});
+  let data;
+  try {
+    const client = new GraphClient(process.env.OPTIMIZELY_GRAPH_SINGLE_KEY!, {
+        graphUrl: process.env.OPTIMIZELY_GRAPH_GATEWAY,
+    });
+    data = await client.request(query, {});
+  } catch (e) {
+    console.warn("Static generation skipped due to Graph Error:", e);
+    return [];
+  }
 
   return data._Page.items
     .filter(
