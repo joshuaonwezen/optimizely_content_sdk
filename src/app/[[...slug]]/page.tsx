@@ -66,17 +66,18 @@ export async function generateStaticParams() {
 
 type Props = {
   params: Promise<{
-    slug: string[];
+    slug?: string[];
   }>;
 };
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
+  const path = slug?.length ? `/${slug.join('/')}` : '/';
 
   const client = new GraphClient(process.env.OPTIMIZELY_GRAPH_SINGLE_KEY!, {
     graphUrl: process.env.OPTIMIZELY_GRAPH_GATEWAY,
   });
-  const content = await client.getContentByPath(`/${slug.join('/')}/`);
+  const content = await client.getContentByPath(path);
 
   if (content.length === 0) {
     notFound();
